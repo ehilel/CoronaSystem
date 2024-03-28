@@ -1,0 +1,59 @@
+<h1 class="text-center" style="background-color: #506a18c5; color: #ffffff;">Corona management system for HMO</h1>
+<div class="w3-container" style="margin-top:100% ; " style="background-color: #506a18c5; color: #ffffff;">
+  <table class="w3-table w3-striped w3-border" style="width:100%;">
+    <thead>
+      <tr class="w3-light-grey" >
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Pone</th>
+        <th>
+          <a routerLink="/Add-Client" routerLinkActive="active" class="nav-link" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+              class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+              </svg>
+          </a>
+        </th>
+      <tr></tr>
+    </thead>
+    <tr *ngFor="let l of listClients" class="w3-light-grey">
+      <td (click)="Details(l.id)">{{l.identityClient}}</td>
+      <td (click)="Details(l.id)">{{l.firstName}}</td>
+      <td (click)="Details(l.id)">{{l.lastName}}</td>
+      <td (click)="Details(l.id)">{{l.mobilePhone}}</td>
+      <td>
+        <svg (click)="UpdateClient(l)" xmlns="https://www.w3.org/TR/SVG2/" width="16" height="16" fill="currentColor"
+          class="bi bi-pen-fill" viewBox="0 0 16 16">
+          <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
+        </svg>
+      </td>
+      <td><svg (click)="DeleteClient(l.identityClient)" xmlns="https://www.w3.org/TR/SVG2/" width="16" height="16"
+        fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+        <path
+          d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8z"/>
+      </svg>
+    
+
+  </table>
+
+  <div style="width: 30%; margin: auto;"> 
+    <h2>The number of clients who have not been vaccinated : {{countNotVaccin}}</h2>
+  </div>
+
+  <div class="container" style="width: 30%; margin: auto;">
+    <div class="row">
+      <div class="col">
+        <h3>The number of patients per day of the month: {{ month }}</h3>
+        <div class="list-group">
+          <div *ngFor="let i of listCountSick; let index = index" class="list-group-item">
+            <span class="badge bg-primary">{{ index + 1 }}</span>
+            <span class="badge bg-secondary">{{ i }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div> 
