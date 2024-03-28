@@ -1,0 +1,62 @@
+def rectangular_tower(height, width):
+
+    if abs(height - width) > 5 or height == width:
+        print("Area: ", height * width)
+    else:
+        print("Perimeter: ", 2 * (height + width))
+
+def print_triangle(width, height):
+    if width % 2 == 0 or width > 2 * height:
+        print("Cannot print the triangle.")
+    else:
+        # Print the triangle
+        # The amount of odd numbers
+        oddNum = (width - 3)/2
+        printlines = int((height - 2)/oddNum)
+        addition = int(height - (2 + oddNum * printlines))
+        for i in range(1, width + 1, 2):
+            if i == 3:
+                for j in range(printlines + addition):
+                    print(" " * int((width - i)/2) + "*" * i)
+            elif i == 1 or i == width:
+                print(" " * int((width - i)/2) + "*" * i)
+            else:
+                for j in range(printlines):
+                    print(" " * int((width - i)/2) + "*" * i)
+
+def triangular_tower(height, width):
+    while True:
+        option = int(input("Choose an option:\n1. Calculate perimeter\n2. Print the triangle\n"))
+
+        if option == 1:
+            perimeter = 2 * height + width
+            print("Perimeter: ", perimeter)
+            break
+        elif option == 2:
+            print_triangle(width, height)
+            break
+        else:
+            print("Invalid choice. Please enter 1, 2.")
+
+
+while True:
+    print("\nMenu:")
+    print("1. Rectangular Tower")
+    print("2. Triangular Tower")
+    print("3. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        height = int(input("Enter the height of the tower: "))
+        width = int(input("Enter the width of the tower: "))
+        rectangular_tower(height, width)
+    elif choice == 2:
+        height = int(input("Enter the height of the tower: "))
+        width = int(input("Enter the width of the tower: "))
+        triangular_tower(height, width)
+    elif choice == 3:
+        print("Exiting the program.")
+        break
+    else:
+        print("Invalid choice. Please enter 1, 2, or 3.")
